@@ -1,1 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+:root { color-scheme: dark; }
+
+html, body {
+  height: 100%;
+  background-color: #0a0f1f;
+}
+
+body {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background:
+    linear-gradient(180deg, rgba(10,15,31,1) 0%, rgba(15,22,41,1) 100%),
+    repeating-linear-gradient(90deg, rgba(122,163,255,0.06) 0 2px, transparent 2px 4px);
+  color: #e6f0ff;
+}
+
+.bg-grid {
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle at 1px 1px, rgba(122,163,255,0.18) 1px, transparent 1px);
+}
+
+.scanline::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 30%;
+  top: -100%;
+  background: linear-gradient(to bottom, transparent, rgba(0,229,255,0.08), transparent);
+  animation: scan 6s linear infinite;
+  pointer-events: none;
+}
+
+.glitch {
+  position: relative;
+  text-shadow:
+    0 0 3px #00e5ff,
+    0 0 6px #ff2fd3,
+    0 0 12px #00e5ff;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+}
+.glitch::before {
+  transform: translate(1px, -1px);
+  color: #00e5ff;
+  opacity: 0.8;
+}
+.glitch::after {
+  transform: translate(-1px, 1px);
+  color: #ff2fd3;
+  opacity: 0.8;
+}
